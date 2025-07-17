@@ -1,146 +1,132 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Línea directa EQUIPO TF</title>
   <style>
     body {
       background: linear-gradient(to bottom, #1b1b1b, #000);
       font-family: 'Orbitron', Arial, sans-serif;
-      color: #ffffff;
-      text-align: center;
-      padding: 20px 10px 20px;
-      min-height: 100vh;
+      color: #fff;
+      margin: 0;
+      padding: 20px 10px 40px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      align-items: center;
     }
 
     .container {
       background-color: rgba(0, 0, 0, 0.85);
       border: 3px solid gold;
       border-radius: 15px;
-      padding: 30px;
-      margin: 0 auto 20px;
-      width: 100%;
-      max-width: 400px;
+      padding: 30px 20px;
       box-shadow: 0 0 25px gold;
+      max-width: 400px;
+      width: 100%;
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 26px;
+      margin-bottom: 20px;
       color: gold;
-      margin-bottom: 10px;
+      text-align: center;
     }
 
-    input[type="text"] {
-      width: 90%;
+    input {
+      width: 100%;
       padding: 12px;
       border-radius: 8px;
       border: none;
-      margin: 15px 0;
       font-size: 16px;
+      margin-bottom: 20px;
+      text-align: center;
     }
 
     button {
-      background-color: yellow;
+      background: yellow;
       border: none;
-      padding: 12px 24px;
-      font-size: 16px;
+      color: black;
+      font-size: 18px;
       font-weight: bold;
+      padding: 12px 24px;
       border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 0 15px #ff0;
+      box-shadow: 0 0 15px #ffd700;
     }
 
-    .info-text {
+    .mensaje {
+      margin-top: 20px;
       font-size: 16px;
-      color: #00ffff;
-      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .extra {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #00d8ff;
+      max-width: 400px;
+      padding: 0 10px;
     }
 
     .footer {
-      font-size: 14px;
-      color: #00ffff;
       margin-top: 20px;
-    }
-
-    .footer span {
-      display: block;
-      margin-top: 5px;
-    }
-
-    #resultado {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
+      font-size: 12px;
+      color: #0088cc;
     }
   </style>
 </head>
 <body>
-
   <div class="container">
     <h1>Línea directa <br> EQUIPO TF 😎💅🏻</h1>
-    <input type="text" id="codigo" placeholder="Pega tu código aquí">
-    <br>
-    <button onclick="tirar()">🎰 Tirar la rueda</button>
-    <div id="resultado"></div>
+    <input type="text" id="codigoInput" placeholder="Pega tu código aquí" />
+    <button onclick="tirarLaRueda()">🎰 Tirar la rueda</button>
+    <div id="mensaje" class="mensaje"></div>
   </div>
 
-  <div class="info-text">🎲 Jugá en nuestra Línea directa y recibí tus códigos de la suerte 🎲</div>
-  <div class="info-text">🎰 ¡Seguí girando! Nuevas chances todos los días 🎰</div>
-  <div class="info-text">🔥 Línea Directa 24hs: 1161164088 🔥</div>
+  <div class="extra">
+    🎲 Jugá en nuestra Línea directa y recibí tus códigos de la suerte 🎲<br><br>
+    🎰 ¡Seguí girando! Nuevas chances todos los días 🎰<br><br>
+    🔥 Línea Directa 24hs: 1161164088 🔥
+  </div>
 
   <div class="footer">© 2025 Línea directa EQUIPO TF</div>
 
   <script>
-    const codigos = {
-      AABBCC1: true, AABBCC2: false, AABBCC3: true, AABBCC4: false,
-      AABBCC5: true, AABBCC6: false, AABBCC7: true, AABBCC8: false,
-      AABBCC9: true, AABBCC10: false, AABBCC11: true, AABBCC12: false,
-      AABBCC13: true, AABBCC14: false, AABBCC15: true, AABBCC16: false,
-      AABBCC17: true, AABBCC18: false, AABBCC19: true, AABBCC20: false,
-      AABBCC21: true, AABBCC22: false, AABBCC23: true, AABBCC24: false,
-      AABBCC25: true, AABBCC26: false, AABBCC27: true, AABBCC28: false,
-      AABBCC29: true, AABBCC30: false
+    const codigosValidos = {
+      "TF123": true,
+      "TF456": true,
+      "TF789": true
     };
 
-    function tirar() {
-      const codigo = document.getElementById("codigo").value.trim().toUpperCase();
-      const resultado = document.getElementById("resultado");
-      const usados = JSON.parse(localStorage.getItem("usados") || "[]");
+    const usados = new Set();
 
-      if (!codigo) {
-        resultado.innerHTML = "⚠️ Ingresá un código.";
-        resultado.style.color = "#ffcc00";
+    function tirarLaRueda() {
+      const input = document.getElementById("codigoInput").value.trim().toUpperCase();
+      const mensaje = document.getElementById("mensaje");
+
+      if (!input) {
+        mensaje.innerText = "⚠️ Ingresá un código.";
+        mensaje.style.color = "orange";
         return;
       }
 
-      if (usados.includes(codigo)) {
-        resultado.innerHTML = "🚫 Este código ya fue utilizado.";
-        resultado.style.color = "#ff3333";
+      if (usados.has(input)) {
+        mensaje.innerText = "🚫 Este código ya fue utilizado.";
+        mensaje.style.color = "red";
         return;
       }
 
-      if (!(codigo in codigos)) {
-        resultado.innerHTML = "❌ Código inválido. Probá con otro.";
-        resultado.style.color = "#ff3333";
-        return;
-      }
-
-      usados.push(codigo);
-      localStorage.setItem("usados", JSON.stringify(usados));
-
-      if (codigos[codigo]) {
-        resultado.innerHTML = "🎉 ¡Felicidades! Tu código tiene premio.";
-        resultado.style.color = "#00ff00";
+      if (codigosValidos[input]) {
+        mensaje.innerText = "🎉 ¡Felicidades! Este código tiene premio.";
+        mensaje.style.color = "lime";
+        usados.add(input);
       } else {
-        resultado.innerHTML = "😕 Este código no tiene premio. ¡Seguí participando!";
-        resultado.style.color = "#ffffff";
+        mensaje.innerText = "❌ Código incorrecto o sin premio.";
+        mensaje.style.color = "red";
       }
     }
   </script>
-
 </body>
 </html>
