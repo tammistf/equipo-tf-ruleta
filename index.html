@@ -2,78 +2,59 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Línea directa EQUIPO TF</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background: url('https://images.unsplash.com/photo-1600959907703-8812d60f3b7e?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-image: url('https://i.imgur.com/gijC6O9.jpg'); /* fondo de casino real */
       background-size: cover;
-      font-family: 'Arial Black', sans-serif;
+      background-position: center;
+      font-family: Arial, sans-serif;
       color: #fff;
       text-align: center;
+      margin: 0;
+      padding: 0;
     }
+
     .container {
-      margin-top: 50px;
+      background-color: rgba(0, 0, 0, 0.7);
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #ffd700;
     }
+
     h1 {
-      font-size: 3rem;
-      color: gold;
-      text-shadow: 2px 2px 10px black;
+      font-size: 24px;
+      color: #ffd700;
+      margin-bottom: 20px;
     }
+
     input[type="text"] {
+      width: 80%;
       padding: 10px;
-      font-size: 1.2rem;
-      width: 300px;
+      font-size: 16px;
       border-radius: 10px;
       border: none;
-      text-align: center;
+      margin-bottom: 20px;
     }
+
     button {
-      background-color: gold;
+      background-color: #ffd700;
       color: black;
-      font-size: 1.3rem;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px 20px;
       border: none;
-      border-radius: 8px;
-      padding: 10px 30px;
-      margin-top: 20px;
+      border-radius: 10px;
       cursor: pointer;
-      font-weight: bold;
     }
-    #ruleta {
-      margin: 40px auto;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      border: 10px solid gold;
-      position: relative;
-      background: conic-gradient(
-        #FFD700 0deg 60deg,
-        #FF4500 60deg 120deg,
-        #32CD32 120deg 180deg,
-        #1E90FF 180deg 240deg,
-        #FF69B4 240deg 300deg,
-        #8A2BE2 300deg 360deg
-      );
-      transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
-    }
-    #flecha {
-      width: 0;
-      height: 0;
-      border-left: 20px solid transparent;
-      border-right: 20px solid transparent;
-      border-bottom: 30px solid red;
-      margin: 0 auto;
-      position: relative;
-      top: -20px;
-    }
+
     #resultado {
-      font-size: 1.8rem;
-      margin-top: 30px;
-      font-weight: bold;
-      color: white;
-      text-shadow: 2px 2px 5px black;
+      margin-top: 25px;
+      font-size: 18px;
+      color: #ffffff;
     }
   </style>
 </head>
@@ -82,33 +63,49 @@
     <h1>Línea directa EQUIPO TF 😎💅🏻</h1>
     <input type="text" id="codigo" placeholder="Pegá tu código aquí" />
     <br />
-    <button onclick="tirarLaRuleta()">Tirar la rueda</button>
-    <div id="flecha"></div>
-    <div id="ruleta"></div>
+    <button onclick="tirar()">🎰 Tirar la rueda</button>
     <div id="resultado"></div>
   </div>
 
   <script>
     const codigosPremiados = {
       "00001": "🎉 ¡Ganaste 200 fichas!",
-      "00002": "✨ ¡Carga gratis activada!",
-      "00003": "Ὃ0 Premio sorpresa desbloqueado",
-      "00004": "❌ Sin suerte esta vez",
-      "00005": "🌟 ¡Ganaste 20% extra!",
-      "00006": "🏩 Acceso VIP desbloqueado"
+      "00002": "📲 ¡Carga gratis activada!",
+      "00003": "🎁 Premio sorpresa desbloqueado",
+      "00004": "😓 Sin suerte esta vez.",
+      "00005": "🔥 ¡Ganaste 20% extra!",
+      "00006": "🎉 ¡Ganaste 200 fichas!",
+      "00007": "📲 ¡Carga gratis activada!",
+      "00008": "😓 Sin suerte esta vez.",
+      "00009": "🔐 Acceso VIP desbloqueado",
+      "00010": "🔥 ¡Ganaste 20% extra!",
+      "00011": "🎉 ¡Ganaste 200 fichas!",
+      "00012": "😓 Sin suerte esta vez.",
+      "00013": "🎁 Premio sorpresa desbloqueado",
+      "00014": "🔐 Acceso VIP desbloqueado",
+      "00015": "🔥 ¡Ganaste 20% extra!",
+      "00016": "😓 Sin suerte esta vez.",
+      "00017": "📲 ¡Carga gratis activada!",
+      "00018": "🎁 Premio sorpresa desbloqueado",
+      "00019": "🔐 Acceso VIP desbloqueado",
+      "00020": "😓 Sin suerte esta vez."
     };
 
-    function tirarLaRuleta() {
-      const ruleta = document.getElementById("ruleta");
-      const codigo = document.getElementById("codigo").value;
-      const resultado = document.getElementById("resultado");
-      const grados = Math.floor(Math.random() * 360) + 360 * 4;
-      ruleta.style.transform = `rotate(${grados}deg)`;
-      setTimeout(() => {
-        resultado.innerText = codigosPremiados[codigo] || "❌ Código inválido o sin premio.";
-      }, 4000);
+    function tirar() {
+      const codigo = document.getElementById('codigo').value.trim();
+      const resultado = document.getElementById('resultado');
+      
+      if (codigo === "") {
+        resultado.innerText = "⚠️ Ingresá un código para continuar.";
+        return;
+      }
+
+      if (codigosPremiados[codigo]) {
+        resultado.innerText = codigosPremiados[codigo];
+      } else {
+        resultado.innerText = "❌ Código inválido.";
+      }
     }
   </script>
 </body>
 </html>
-
