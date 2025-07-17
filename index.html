@@ -114,24 +114,38 @@
   </footer>
 
   <script>
+    async function tirar() {
+      const codigoIngresado = document.getElementById("codigo").value.trim().toUpperCase();
+      const resultado = document.getElementById("resultado");
 
+      if (!codigoIngresado) {
+        resultado.style.color = "orange";
+        resultado.innerHTML = "⚠️ Ingresá un código.";
+        return;
+      }
 
-   const codigosUsados = new Set(JSON.parse(localStorage.getItem("codigosUsados")) || []);
+      try {
+        const response = await fetch("/api/verificar-codigo.js", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ codigo: codigoIngresado })
+        });
 
-function tirar() {
-  const codigoIngresado = document.getElementById("codigo").value.trim().toUpperCase();
-  const resultado = document.getElementById("resultado");
+        const data = await response.json();
 
-  if (!codigoIngresado) {
-    resultado.style.color = "orange";
-    resultado.innerHTML = "⚠️ Ingresá un código.";
-    return;
-  }
-
-  if (codigosUsados.has(codigoIngresado)) {
-    resultado.style.color = "#ffcc00";
-    resultado.innerHTML = "🚫 Este código ya fue utilizado.";
-    return;
+        if (response.status === 200) {
+          resultado.style.color = "#00ff00";
+          resultado.innerHTML = "✅ " + (data.premio ? data.premio : data.mensaje);
+        } else {
+          resultado.style.color = "#ffcc00";
+          resultado.innerHTML = "🚫 " + data.mensaje;
+        }
+      } catch (error) {
+        resultado.style.color = "red";
+        resultado.innerHTML = "❌ Error al verificar el código.";
+      }
     }
   </script>
 </body>
