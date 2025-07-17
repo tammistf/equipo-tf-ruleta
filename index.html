@@ -6,14 +6,21 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
-    body {
-      background: linear-gradient(to bottom, #1b1b1b, #000);
-      font-family: 'Orbitron', Arial, sans-serif;
-      color: #ffffff;
-      text-align: center;
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
       margin: 0;
-      padding: 30px 5px 60px; /* Ajustado para móvil */
-      display: block;
+      padding: 0;
+      font-family: 'Orbitron', Arial, sans-serif;
+      background: linear-gradient(to bottom, #1b1b1b, #000);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .container {
@@ -21,15 +28,14 @@
       border: 3px solid gold;
       border-radius: 15px;
       padding: 30px;
-      margin: 0 auto 20px;
-      width: 100%;
+      width: 90%;
       max-width: 400px;
       box-shadow: 0 0 25px gold;
-      box-sizing: border-box;
+      text-align: center;
     }
 
     h1 {
-      font-size: 30px;
+      font-size: 28px;
       margin-bottom: 20px;
       color: gold;
       font-weight: bold;
@@ -71,33 +77,18 @@
     .mensaje-final,
     .info-extra,
     footer {
-      font-size: 16px;
-      margin-top: 25px;
+      font-size: 14px;
+      margin-top: 20px;
       color: #00ffff;
       text-shadow: 0 0 5px #00ffff;
+      text-align: center;
+      max-width: 90%;
     }
 
     footer {
+      color: #888;
+      font-size: 12px;
       margin-top: 30px;
-      font-size: 14px;
-      color: #999;
-    }
-
-    @media screen and (max-width: 480px) {
-      .mensaje-final,
-      .info-extra,
-      footer {
-        font-size: 14px;
-      }
-
-      h1 {
-        font-size: 24px;
-      }
-
-      input, button {
-        font-size: 14px;
-        padding: 8px 16px;
-      }
     }
   </style>
 </head>
