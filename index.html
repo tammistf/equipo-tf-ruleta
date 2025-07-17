@@ -1,116 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Línea directa EQUIPO TF 😎💅🏻</title>
-    <style>
-        body {
-            background-image: url('https://raw.githubusercontent.com/tammistf/equipo-tf-ruleta/main/fondo.jpg');
-            background-size: cover;
-            background-position: center;
-            font-family: Arial, sans-serif;
-            color: #fff;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            background-color: rgba(0, 0, 0, 0.7);
-            border: 3px solid yellow;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 100px auto;
-            width: 90%;
-            max-width: 400px;
-        }
-        h1 {
-            font-size: 28px;
-            color: gold;
-            margin-bottom: 20px;
-        }
-        input[type="text"] {
-            padding: 10px;
-            width: 80%;
-            font-size: 18px;
-            border-radius: 5px;
-            border: none;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        button {
-            background-color: yellow;
-            color: black;
-            font-weight: bold;
-            border: none;
-            padding: 10px 20px;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        #resultado {
-            font-size: 20px;
-            margin-top: 20px;
-            color: white;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Línea directa EQUIPO TF 😎💅🏻</title>
+  <style>
+    body {
+      background-image: url('https://raw.githubusercontent.com/tammistf/equipo-tf-ruleta/main/01DB04B3-00DA-4160-A77D-D30BA9D07301.png');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.7);
+      border: 3px solid yellow;
+      border-radius: 15px;
+      padding: 30px;
+      margin: 80px auto;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    input {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 80%;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: yellow;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Línea directa EQUIPO TF 😎💅🏻</h1>
-        <input type="text" id="codigoInput" placeholder="Pega tu código aquí">
-        <br>
-        <button onclick="tirarLaRueda()">🎰 Tirar la rueda</button>
-        <div id="resultado"></div>
-    </div>
+  <div class="container">
+    <h1>Línea directa EQUIPO TF 😎💅🏻</h1>
+    <input type="text" id="codigo" placeholder="Pega tu código aquí">
+    <br>
+    <button onclick="tirar()">🎰 Tirar la rueda</button>
+    <div id="resultado"></div>
+  </div>
 
-    <script>
-        const codigosPremiados = {
-            "00001": "🎉 ¡Ganaste 200 fichas!",
-            "00002": "💸 ¡Carga gratis activada!",
-            "00003": "🎁 Premio sorpresa desbloqueado",
-            "00004": "😢 Sin suerte esta vez",
-            "00005": "📈 ¡Ganaste 20% extra!",
-            "00006": "🎉 ¡Ganaste 200 fichas!",
-            "00007": "💸 ¡Carga gratis activada!",
-            "00008": "😢 Sin suerte esta vez",
-            "00009": "🔓 Acceso VIP desbloqueado",
-            "00010": "📈 ¡Ganaste 20% extra!",
-            "00011": "🎉 ¡Ganaste 200 fichas!",
-            "00012": "😢 Sin suerte esta vez",
-            "00013": "🎁 Premio sorpresa desbloqueado",
-            "00014": "🔓 Acceso VIP desbloqueado",
-            "00015": "📈 ¡Ganaste 20% extra!",
-            "00016": "😢 Sin suerte esta vez",
-            "00017": "💸 ¡Carga gratis activada!",
-            "00018": "🎁 Premio sorpresa desbloqueado",
-            "00019": "🔓 Acceso VIP desbloqueado",
-            "00020": "😢 Sin suerte esta vez"
-        };
+  <script>
+    const codigosValidos = {
+      "00001": "🎁 ¡Ganaste 100 fichas!",
+      "00002": "🎉 ¡Cargá gratis activada!",
+      "00003": "💸 ¡20% extra en tu próxima compra!",
+      "00004": "❌ Sin suerte esta vez, volvé a intentar mañana",
+    };
 
-        const codigosUsados = new Set();
+    const usados = new Set();
 
-        function tirarLaRueda() {
-            const input = document.getElementById("codigoInput").value.trim();
-            const resultado = document.getElementById("resultado");
+    function tirar() {
+      const codigo = document.getElementById("codigo").value.trim();
+      const resultado = document.getElementById("resultado");
 
-            if (input === "") {
-                resultado.innerText = "⛔ Por favor ingresa un código.";
-                return;
-            }
+      if (usados.has(codigo)) {
+        resultado.textContent = "⛔ Este código ya fue usado.";
+        resultado.style.color = "red";
+        return;
+      }
 
-            if (codigosUsados.has(input)) {
-                resultado.innerText = "⚠️ Este código ya fue usado.";
-                return;
-            }
-
-            if (codigosPremiados.hasOwnProperty(input)) {
-                resultado.innerText = codigosPremiados[input];
-                codigosUsados.add(input);
-            } else {
-                resultado.innerText = "❌ Código inválido.";
-            }
-        }
-    </script>
+      if (codigosValidos[codigo]) {
+        resultado.textContent = codigosValidos[codigo];
+        resultado.style.color = "lime";
+        usados.add(codigo);
+      } else {
+        resultado.textContent = "❌ Código inválido.";
+        resultado.style.color = "orange";
+      }
+    }
+  </script>
 </body>
 </html>
+
