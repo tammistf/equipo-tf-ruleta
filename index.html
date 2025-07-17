@@ -7,11 +7,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
     body {
-      background-image: url("https://raw.githubusercontent.com/tammistf/equipo-tf-ruleta/main/01D804B3-0D0A-4160-A77D-D30BA9D07301.png");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
+      background-color: black;
       font-family: 'Orbitron', Arial, sans-serif;
       color: #ffffff;
       text-align: center;
@@ -90,6 +86,13 @@
       color: lime;
       text-shadow: 0 0 10px lime;
     }
+
+    #mensaje-magico {
+      margin-top: 10px;
+      color: #00ffff;
+      font-size: 14px;
+      text-shadow: 0 0 5px #0ff;
+    }
   </style>
 </head>
 <body>
@@ -98,10 +101,44 @@
     <input type="text" id="codigo" placeholder="Pega tu código aquí" />
     <br />
     <button onclick="tirar()">🎰 Tirar la rueda</button>
+    <div id="mensaje-magico">✨ Suerte activada... ¡Vamos con todo!</div>
     <div id="resultado"></div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const codigosValidos = {
+      "00001": "🎉 ¡Ganaste un 20% extra!",
+      "00002": "🎁 Crédito doble en tu próxima compra",
+      "00003": "🤑 ¡Acceso a una ruleta especial!",
+      "00004": "🔥 Bonus sorpresa EQUIPO TF",
+      "00005": "💸 2 fichas de regalo para hoy"
+    };
+
+    const codigosUsados = [];
+
+    function tirar() {
+      const input = document.getElementById("codigo");
+      const resultado = document.getElementById("resultado");
+      const codigo = input.value.trim();
+
+      if (codigosUsados.includes(codigo)) {
+        resultado.innerHTML = "❌ Este código ya fue usado. No seas trampos@ 😉";
+        resultado.style.color = "red";
+        return;
+      }
+
+      if (codigosValidos[codigo]) {
+        resultado.innerHTML = codigosValidos[codigo];
+        resultado.style.color = "lime";
+        codigosUsados.push(codigo);
+      } else {
+        resultado.innerHTML = "❌ Código inválido. Probá con otro.";
+        resultado.style.color = "red";
+      }
+
+      input.value = "";
+    }
+  </script>
 </body>
 </html>
 
