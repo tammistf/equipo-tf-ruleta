@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Línea directa EQUIPO TF 😎💅🏻</title>
+  <style>
+    body {
+      background-image: url('fondo-casino-tf.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.7);
+      border: 3px solid yellow;
+      border-radius: 15px;
+      margin: 30px auto;
+      padding: 30px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 20px #FFD700;
+    }
+
+    input, button {
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: yellow;
+      color: black;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: gold;
+    }
+
+    #resultado {
+      font-size: 22px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Línea directa EQUIPO TF 😎💅🏻</h1>
+    <input type="text" id="codigoInput" placeholder="Pegá tu código aquí">
+    <br>
+    <button onclick="girarRuleta()">🎰 Tirar la rueda</button>
+    <p id="resultado"></p>
+  </div>
+
+  <script>
+    const codigosPremiados = {
+      "00001": "💣 ¡Ganaste 200 fichas!",
+      "00002": "📲 ¡Carga gratis activada!",
+      "00003": "🎁 Premio sorpresa desbloqueado",
+      "00004": "😕 Sin suerte esta vez",
+      "00005": "💸 Ganaste 20% extra",
+    };
+
+    const codigosUsados = {};
+
+    function girarRuleta() {
+      const codigo = document.getElementById("codigoInput").value.trim();
+      const resultado = document.getElementById("resultado");
+
+      if (codigosUsados[codigo]) {
+        resultado.textContent = "❌ Ese código ya fue usado.";
+      } else if (codigosPremiados[codigo]) {
+        resultado.textContent = codigosPremiados[codigo];
+        codigosUsados[codigo] = true;
+      } else {
+        resultado.textContent = "❌ Código inválido.";
+      }
+    }
+  </script>
+</body>
+</html>
