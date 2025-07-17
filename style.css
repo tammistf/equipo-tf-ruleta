@@ -1,51 +1,39 @@
 
 body {
-  margin: 0;
-  padding: 0;
   background: url('https://cdn.pixabay.com/photo/2016/11/29/06/15/casino-1867117_1280.jpg') no-repeat center center fixed;
   background-size: cover;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, sans-serif;
+  text-align: center;
   color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-  background: rgba(0,0,0,0.8);
-  padding: 40px;
-  border-radius: 15px;
-  text-align: center;
-  width: 90%;
-  max-width: 400px;
+  padding-top: 40px;
 }
 
 h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 26px;
   color: gold;
+  text-shadow: 1px 1px 4px black;
 }
 
-input {
-  padding: 12px;
-  font-size: 16px;
-  width: 80%;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  border: none;
-  text-align: center;
+#ruleta {
+  margin-top: 30px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.3);
 }
 
 button {
-  padding: 12px 20px;
-  font-size: 18px;
+  margin-top: 30px;
+  padding: 15px 30px;
+  font-size: 20px;
   background-color: gold;
-  color: #000;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: 0.3s;
 }
 
 button:hover {
@@ -54,27 +42,8 @@ button:hover {
 
 #resultado {
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
-}
-
-.ruleta {
-  margin-top: 30px;
-  width: 100px;
-  height: 100px;
-  border: 6px solid #fff;
-  border-radius: 50%;
-  background: radial-gradient(circle, #f1c40f 30%, #e67e22 100%);
-  margin-left: auto;
-  margin-right: auto;
-  animation: none;
-}
-
-.girando {
-  animation: spin 2s ease-out;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(1080deg); }
+  color: #fff;
+  text-shadow: 1px 1px 3px #000;
 }
