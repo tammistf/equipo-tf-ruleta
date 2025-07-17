@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Línea directa EQUIPO TF 😎💅🏻</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
@@ -19,8 +20,8 @@
       background-color: rgba(0, 0, 0, 0.85);
       border: 3px solid gold;
       border-radius: 15px;
-      padding: 30px;
-      margin: 100px auto 20px;
+      padding: 30px 20px;
+      margin: 60px auto 20px;
       width: 90%;
       max-width: 400px;
       box-shadow: 0 0 25px gold;
@@ -38,7 +39,7 @@
       padding: 10px;
       border: none;
       border-radius: 5px;
-      width: 80%;
+      width: 90%;
       font-size: 16px;
       margin-bottom: 20px;
       box-shadow: 0 0 10px white;
@@ -68,9 +69,24 @@
 
     .mensaje-final {
       font-size: 16px;
-      margin: 30px auto;
+      margin: 30px 10px;
       color: #00ffff;
       text-shadow: 0 0 5px #00ffff;
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 8px 15px;
+      }
+
+      .mensaje-final {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -88,29 +104,15 @@
   <script>
     const codigosValidos = {};
     for (let i = 1; i <= 30; i++) {
-      codigosValidos["AABBCC" + i] = "🎉 20% extra en tu próxima compra!";
+      const code = 'AABBCC' + i;
+      codigosValidos[code] = `🎁 ¡Ganaste un premio con el código ${code}!`;
     }
-
-    const codigosUsados = new Set();
 
     function tirar() {
       const codigoIngresado = document.getElementById("codigo").value.trim().toUpperCase();
       const resultado = document.getElementById("resultado");
 
-      if (!codigoIngresado) {
-        resultado.style.color = "#ff3333";
-        resultado.innerHTML = "⚠️ Por favor ingresá un código.";
-        return;
-      }
-
-      if (codigosUsados.has(codigoIngresado)) {
-        resultado.style.color = "#ffcc00";
-        resultado.innerHTML = "⛔ Ese código ya fue usado.";
-        return;
-      }
-
       if (codigosValidos[codigoIngresado]) {
-        codigosUsados.add(codigoIngresado);
         resultado.style.color = "#00ff00";
         resultado.innerHTML = "✅ " + codigosValidos[codigoIngresado];
       } else {
@@ -121,4 +123,3 @@
   </script>
 </body>
 </html>
-
