@@ -147,17 +147,32 @@
       "AABBCC30": "🎉 Premio acumulado liberado!"
     };
 
-    function tirar() {
-      const codigoIngresado = document.getElementById("codigo").value.trim();
-      const resultado = document.getElementById("resultado");
+   const codigosUsados = new Set();
 
-      if (codigosValidos[codigoIngresado]) {
-        resultado.style.color = "#00ff00";
-        resultado.innerHTML = "✅ " + codigosValidos[codigoIngresado];
-      } else {
-        resultado.style.color = "#ff3333";
-        resultado.innerHTML = "❌ Código inválido. Probá con otro.";
-      }
+function tirar() {
+  const codigoIngresado = document.getElementById("codigo").value.trim().toUpperCase();
+  const resultado = document.getElementById("resultado");
+
+  if (!codigoIngresado) {
+    resultado.style.color = "orange";
+    resultado.innerHTML = "⚠️ Ingresá un código.";
+    return;
+  }
+
+  if (codigosUsados.has(codigoIngresado)) {
+    resultado.style.color = "#ffcc00";
+    resultado.innerHTML = "🚫 Este código ya fue utilizado.";
+    return;
+  }
+
+  if (codigosValidos[codigoIngresado]) {
+    codigosUsados.add(codigoIngresado); // Lo marcamos como usado
+    resultado.style.color = "#00ff00";
+    resultado.innerHTML = "✅ " + codigosValidos[codigoIngresado];
+  } else {
+    resultado.style.color = "#ff3333";
+    resultado.innerHTML = "❌ Código inválido. Probá con otro.";
+  }
     }
   </script>
 </body>
