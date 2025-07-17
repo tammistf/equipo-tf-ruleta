@@ -4,54 +4,66 @@
   <meta charset="UTF-8">
   <title>Línea directa EQUIPO TF 😎💅🏻</title>
   <style>
-<style>
-  body {
-    background-image: url("https://raw.githubusercontent.com/tammistf/equipo-tf-ruleta/main/01D804B3-0D0A-4160-A77D-D30BA9D07301.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    font-family: Arial, sans-serif;
-    color: #fff;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-  }
+    body {
+      background-image: url('https://raw.githubusercontent.com/tammistf/equipo-tf-ruleta/main/01D804B3-0D0A-4160-A77D-D30BA9D07301.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: 'Arial Black', sans-serif;
+      color: #ffffff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
 
-  .container {
-    background-color: rgba(0, 0, 0, 0.7);
-    border: 3px solid yellow;
-    border-radius: 15px;
-    padding: 30px;
-    margin: 100px auto;
-    width: 90%;
-    max-width: 400px;
-  }
+    .container {
+      background-color: rgba(0, 0, 0, 0.8);
+      border: 4px solid #ffd700;
+      border-radius: 20px;
+      padding: 40px;
+      margin: 120px auto;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 20px #ffd700;
+    }
 
-  input {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    width: 80%;
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 25px;
+      color: #ffd700;
+      text-shadow: 1px 1px 5px #000;
+    }
 
-  button {
-    background-color: yellow;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-  }
+    input {
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      width: 80%;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
 
-  #resultado {
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: 18px;
-  }
-</style>
+    button {
+      background-color: #ffd700;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ffd700;
+    }
+
+    #resultado {
+      margin-top: 25px;
+      font-weight: bold;
+      font-size: 20px;
+      color: #00ff00;
+      text-shadow: 1px 1px 5px #000;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -64,34 +76,33 @@
 
   <script>
     const codigosValidos = {
-      "00001": "🎁 ¡Ganaste 100 fichas!",
-      "00002": "🎉 ¡Cargá gratis activada!",
-      "00003": "💸 ¡20% extra en tu próxima compra!",
-      "00004": "❌ Sin suerte esta vez, volvé a intentar mañana",
+      "00001": "🎉 ¡Ganaste una ficha gratis!",
+      "00002": "🔥 30% extra en tu compra de hoy",
+      "00003": "💰 20% extra en tu próxima compra"
     };
 
     const usados = new Set();
 
     function tirar() {
       const codigo = document.getElementById("codigo").value.trim();
-      const resultado = document.getElementById("resultado");
+
+      if (codigo === "") {
+        document.getElementById("resultado").innerText = "⚠️ Ingresá un código válido.";
+        return;
+      }
 
       if (usados.has(codigo)) {
-        resultado.textContent = "⛔ Este código ya fue usado.";
-        resultado.style.color = "red";
+        document.getElementById("resultado").innerText = "❌ Este código ya fue usado.";
         return;
       }
 
       if (codigosValidos[codigo]) {
-        resultado.textContent = codigosValidos[codigo];
-        resultado.style.color = "lime";
         usados.add(codigo);
+        document.getElementById("resultado").innerText = codigosValidos[codigo];
       } else {
-        resultado.textContent = "❌ Código inválido.";
-        resultado.style.color = "orange";
+        document.getElementById("resultado").innerText = "🚫 Código inválido.";
       }
     }
   </script>
 </body>
 </html>
-
