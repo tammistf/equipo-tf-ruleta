@@ -68,7 +68,7 @@
 
     .mensaje-final {
       font-size: 16px;
-      margin-top: 30px;
+      margin: 30px auto;
       color: #00ffff;
       text-shadow: 0 0 5px #00ffff;
     }
@@ -86,17 +86,31 @@
   <div class="mensaje-final">🎲 Jugá en nuestra Línea directa y recibí tus códigos de la suerte 💸</div>
 
   <script>
-    const codigosValidos = {
-      "00001": "🎉 20% extra en tu próxima compra cuerno!",
-      "00002": "🎁 Acceso exclusivo a una sorpresa especial!",
-      "00003": "💰 2 fichas gratis en tu próxima jugada!"
-    };
+    const codigosValidos = {};
+    for (let i = 1; i <= 30; i++) {
+      codigosValidos["AABBCC" + i] = "🎉 20% extra en tu próxima compra!";
+    }
+
+    const codigosUsados = new Set();
 
     function tirar() {
-      const codigoIngresado = document.getElementById("codigo").value.trim();
+      const codigoIngresado = document.getElementById("codigo").value.trim().toUpperCase();
       const resultado = document.getElementById("resultado");
 
+      if (!codigoIngresado) {
+        resultado.style.color = "#ff3333";
+        resultado.innerHTML = "⚠️ Por favor ingresá un código.";
+        return;
+      }
+
+      if (codigosUsados.has(codigoIngresado)) {
+        resultado.style.color = "#ffcc00";
+        resultado.innerHTML = "⛔ Ese código ya fue usado.";
+        return;
+      }
+
       if (codigosValidos[codigoIngresado]) {
+        codigosUsados.add(codigoIngresado);
         resultado.style.color = "#00ff00";
         resultado.innerHTML = "✅ " + codigosValidos[codigoIngresado];
       } else {
@@ -107,5 +121,4 @@
   </script>
 </body>
 </html>
-
 
