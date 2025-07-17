@@ -70,15 +70,22 @@
       display: block;
       margin-top: 5px;
     }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
     <h1>Línea directa <br> EQUIPO TF 😎💅🏻</h1>
-    <input type="text" placeholder="Pega tu código aquí">
+    <input type="text" id="codigo" placeholder="Pega tu código aquí">
     <br>
-    <button>🎰 Tirar la rueda</button>
+    <button onclick="tirar()">🎰 Tirar la rueda</button>
+    <div id="resultado"></div>
   </div>
 
   <div class="info-text">🎲 Jugá en nuestra Línea directa y recibí tus códigos de la suerte 🎲</div>
@@ -86,6 +93,54 @@
   <div class="info-text">🔥 Línea Directa 24hs: 1161164088 🔥</div>
 
   <div class="footer">© 2025 Línea directa EQUIPO TF</div>
+
+  <script>
+    const codigos = {
+      AABBCC1: true, AABBCC2: false, AABBCC3: true, AABBCC4: false,
+      AABBCC5: true, AABBCC6: false, AABBCC7: true, AABBCC8: false,
+      AABBCC9: true, AABBCC10: false, AABBCC11: true, AABBCC12: false,
+      AABBCC13: true, AABBCC14: false, AABBCC15: true, AABBCC16: false,
+      AABBCC17: true, AABBCC18: false, AABBCC19: true, AABBCC20: false,
+      AABBCC21: true, AABBCC22: false, AABBCC23: true, AABBCC24: false,
+      AABBCC25: true, AABBCC26: false, AABBCC27: true, AABBCC28: false,
+      AABBCC29: true, AABBCC30: false
+    };
+
+    function tirar() {
+      const codigo = document.getElementById("codigo").value.trim().toUpperCase();
+      const resultado = document.getElementById("resultado");
+      const usados = JSON.parse(localStorage.getItem("usados") || "[]");
+
+      if (!codigo) {
+        resultado.innerHTML = "⚠️ Ingresá un código.";
+        resultado.style.color = "#ffcc00";
+        return;
+      }
+
+      if (usados.includes(codigo)) {
+        resultado.innerHTML = "🚫 Este código ya fue utilizado.";
+        resultado.style.color = "#ff3333";
+        return;
+      }
+
+      if (!(codigo in codigos)) {
+        resultado.innerHTML = "❌ Código inválido. Probá con otro.";
+        resultado.style.color = "#ff3333";
+        return;
+      }
+
+      usados.push(codigo);
+      localStorage.setItem("usados", JSON.stringify(usados));
+
+      if (codigos[codigo]) {
+        resultado.innerHTML = "🎉 ¡Felicidades! Tu código tiene premio.";
+        resultado.style.color = "#00ff00";
+      } else {
+        resultado.innerHTML = "😕 Este código no tiene premio. ¡Seguí participando!";
+        resultado.style.color = "#ffffff";
+      }
+    }
+  </script>
 
 </body>
 </html>
