@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
   <title>Línea directa EQUIPO TF 😎💅🏻</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
@@ -17,19 +16,18 @@
     }
 
     .container {
-  background-color: rgba(0, 0, 0, 0.85);
-  border: 3px solid gold;
-  border-radius: 15px;
-  padding: 20px;
-  margin: 60px auto 20px;
-  width: 95vw;
-  max-width: 380px;
-  box-shadow: 0 0 25px gold;
-  box-sizing: border-box;
+      background-color: rgba(0, 0, 0, 0.85);
+      border: 3px solid gold;
+      border-radius: 15px;
+      padding: 30px;
+      margin: 60px auto 20px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 25px gold;
     }
 
     h1 {
-      font-size: 30px;
+      font-size: 26px;
       margin-bottom: 20px;
       color: gold;
       font-weight: bold;
@@ -40,7 +38,7 @@
       padding: 10px;
       border: none;
       border-radius: 5px;
-      width: 90%;
+      width: 85%;
       font-size: 16px;
       margin-bottom: 20px;
       box-shadow: 0 0 10px white;
@@ -70,24 +68,24 @@
 
     .mensaje-final {
       font-size: 16px;
-      margin: 30px 10px;
+      margin-top: 30px;
       color: #00ffff;
       text-shadow: 0 0 5px #00ffff;
     }
 
-    @media (max-width: 400px) {
-      h1 {
-        font-size: 22px;
-      }
+    .extra-info {
+      margin-top: 60px;
+      padding: 20px;
+      color: #00ffff;
+      font-size: 16px;
+      text-align: center;
+      text-shadow: 0 0 5px #00ffff;
+    }
 
-      button {
-        font-size: 14px;
-        padding: 8px 15px;
-      }
-
-      .mensaje-final {
-        font-size: 14px;
-      }
+    .extra-info p:last-child {
+      font-size: 13px;
+      opacity: 0.5;
+      margin-top: 15px;
     }
   </style>
 </head>
@@ -100,13 +98,19 @@
     <div id="resultado"></div>
   </div>
 
-  <div class="mensaje-final">🎲 Jugá en nuestra Línea directa y recibí tus códigos de la suerte 💸</div>
+  <div class="mensaje-final">🎲 Jugá en nuestra Línea directa y recibí tus códigos de la suerte 🎲</div>
+
+  <div class="extra-info">
+    <p>🎰 ¡Seguí girando! Nuevas chances todos los días 🎲</p>
+    <p>💸 Compartí esta página con tus amigos y multiplicá tus oportunidades 💸</p>
+    <p>© 2025 Línea directa EQUIPO TF</p>
+  </div>
 
   <script>
     const codigosValidos = {};
     for (let i = 1; i <= 30; i++) {
-      const code = 'AABBCC' + i;
-      codigosValidos[code] = `🎁 ¡Ganaste un premio con el código ${code}!`;
+      const codigo = "AABBCC" + i;
+      codigosValidos[codigo] = "🎉 ¡Premio desbloqueado! Usalo con TF 😎";
     }
 
     function tirar() {
