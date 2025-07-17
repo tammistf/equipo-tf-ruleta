@@ -3,38 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>Línea directa EQUIPO TF 😎💅🏻</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
-    html, body {
-      height: 100%;
+    body {
+      background: linear-gradient(to bottom, #1b1b1b, #000);
+      font-family: 'Orbitron', Arial, sans-serif;
+      color: #ffffff;
+      text-align: center;
       margin: 0;
-      padding: 0;
+      padding: 30px 5px 60px; /* Ajustado para móvil */
+      display: block;
     }
 
-   body {
-  background: linear-gradient(to bottom, #1b1b1b, #000);
-  font-family: 'Orbitron', Arial, sans-serif;
-  color: #ffffff;
-  margin: 0;
-  padding: 30px 10px 60px; /* espacio arriba y abajo */
-  display: block;
-}
-
-.container {
-  background-color: rgba(0, 0, 0, 0.85);
-  border: 3px solid gold;
-  border-radius: 15px;
-  padding: 30px;
-  margin: 0 auto 20px;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 0 25px gold;
-}
+    .container {
+      background-color: rgba(0, 0, 0, 0.85);
+      border: 3px solid gold;
+      border-radius: 15px;
+      padding: 30px;
+      margin: 0 auto 20px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 25px gold;
+      box-sizing: border-box;
+    }
 
     h1 {
-      font-size: 26px;
+      font-size: 30px;
       margin-bottom: 20px;
       color: gold;
       font-weight: bold;
@@ -45,7 +40,7 @@
       padding: 10px;
       border: none;
       border-radius: 5px;
-      width: 85%;
+      width: 80%;
       font-size: 16px;
       margin-bottom: 20px;
       box-shadow: 0 0 10px white;
@@ -73,26 +68,36 @@
       font-size: 18px;
     }
 
-    .mensaje-final {
+    .mensaje-final,
+    .info-extra,
+    footer {
       font-size: 16px;
-      margin-top: 30px;
+      margin-top: 25px;
       color: #00ffff;
       text-shadow: 0 0 5px #00ffff;
     }
 
-    .extra-info {
+    footer {
       margin-top: 30px;
-      padding: 20px;
-      color: #00ffff;
-      font-size: 16px;
-      text-align: center;
-      text-shadow: 0 0 5px #00ffff;
+      font-size: 14px;
+      color: #999;
     }
 
-    .extra-info p:last-child {
-      font-size: 13px;
-      opacity: 0.5;
-      margin-top: 15px;
+    @media screen and (max-width: 480px) {
+      .mensaje-final,
+      .info-extra,
+      footer {
+        font-size: 14px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      input, button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
     }
   </style>
 </head>
@@ -106,22 +111,45 @@
   </div>
 
   <div class="mensaje-final">🎲 Jugá en nuestra Línea directa y recibí tus códigos de la suerte 🎲</div>
-
-  <div class="extra-info">
-    <p>🎰 ¡Seguí girando! Nuevas chances todos los días 🎲</p>
-    <p>💥 Línea Directa 24hs: <b>1161164088</b> 💥</p>
-    <p>© 2025 Línea directa EQUIPO TF</p>
-  </div>
+  <div class="info-extra">🎰 ¡Seguí girando! Nuevas chances todos los días 🎲<br>💥 Línea Directa 24hs: 1161164088 💥</div>
+  <footer>© 2025 Línea directa EQUIPO TF</footer>
 
   <script>
-    const codigosValidos = {};
-    for (let i = 1; i <= 30; i++) {
-      const codigo = "AABBCC" + i;
-      codigosValidos[codigo] = "🎉 ¡Premio desbloqueado! Usalo con TF 😎";
-    }
+    const codigosValidos = {
+      "AABBCC1": "🎉 20% extra en tu próxima compra!",
+      "AABBCC2": "🎁 Acceso exclusivo a una sorpresa especial!",
+      "AABBCC3": "💰 2 fichas gratis en tu próxima jugada!",
+      "AABBCC4": "🎯 Bono sorpresa activado!",
+      "AABBCC5": "🔐 Desbloqueaste acceso VIP por 24hs!",
+      "AABBCC6": "🎊 30% extra en tu siguiente carga!",
+      "AABBCC7": "🤑 Premio duplicado hoy!",
+      "AABBCC8": "🎉 ¡Sos parte del sorteo semanal!",
+      "AABBCC9": "💎 Regalo premium activado!",
+      "AABBCC10": "🚀 Subís de nivel automáticamente!",
+      "AABBCC11": "🎰 Giros gratis desbloqueados!",
+      "AABBCC12": "🔓 Código exclusivo activado!",
+      "AABBCC13": "📲 Envío gratuito del próximo bono!",
+      "AABBCC14": "🎮 Modo turbo desbloqueado!",
+      "AABBCC15": "🎲 ¡Triplicá tu siguiente premio!",
+      "AABBCC16": "🧨 Accedé al premio oculto!",
+      "AABBCC17": "🎀 Caja misteriosa desbloqueada!",
+      "AABBCC18": "💸 Devolución del 10% asegurada!",
+      "AABBCC19": "🧿 Protección de saldo activada!",
+      "AABBCC20": "🎆 Te ganaste una entrada extra!",
+      "AABBCC21": "🏆 ¡Código ganador! Reclamá tu ficha!",
+      "AABBCC22": "🎯 Bonus de recarga habilitado!",
+      "AABBCC23": "🎟️ Pase directo al próximo sorteo!",
+      "AABBCC24": "📦 Regalo sorpresa en camino!",
+      "AABBCC25": "🎇 40% más en tu siguiente apuesta!",
+      "AABBCC26": "🌟 ¡Sos cliente estrella hoy!",
+      "AABBCC27": "💥 Racha de suerte activada!",
+      "AABBCC28": "🔮 Premio oculto revelado!",
+      "AABBCC29": "🎫 Ticket dorado habilitado!",
+      "AABBCC30": "🧧 Recibís un regalo mágico sorpresa!"
+    };
 
     function tirar() {
-      const codigoIngresado = document.getElementById("codigo").value.trim().toUpperCase();
+      const codigoIngresado = document.getElementById("codigo").value.trim();
       const resultado = document.getElementById("resultado");
 
       if (codigosValidos[codigoIngresado]) {
