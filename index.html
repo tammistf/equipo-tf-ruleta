@@ -147,7 +147,7 @@
       "AABBCC30": "🎉 Premio acumulado liberado!"
     };
 
-   const codigosUsados = new Set();
+   const codigosUsados = new Set(JSON.parse(localStorage.getItem("codigosUsados")) || []);
 
 function tirar() {
   const codigoIngresado = document.getElementById("codigo").value.trim().toUpperCase();
