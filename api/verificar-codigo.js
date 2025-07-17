@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import path from 'path';
 
-const codigosPath = path.resolve('./codigos.json');
+const codigosPath = path.resolve('./api.codigos.json');
 let codigos = JSON.parse(readFileSync(codigosPath));
 
 export default function handler(req, res) {
